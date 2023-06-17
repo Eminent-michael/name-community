@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home
+from .views import creatBlog
 
 urlpatterns = [
-    path("", home),
+    path("create-post/", creatBlog),
 ]
