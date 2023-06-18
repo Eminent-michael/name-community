@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
 </head>
+
+<style>
+    form div {
+        margin-bottom: 20px;
+    }
+</style>
+
 <body>
-    <form action="" method="post">
+    <form action="" method="POST">
         {% csrf_token %}
-        {{forms.as_p}}
+        {{form.media}}
+        <div>
+            <label for="title">Title</label>
+            {{ form.title }}
+        </div>
+        <div>
+            <label for="body">Body</label>
+            {{ form.body | safe }}
+        </div>
+        <div>
+            <label for="categories">Categories</label>
+            {{ form.categories }}
+        </div>
+        <div>
+            <label for="minute">Minute to read</label>
+            {{ form.minute_read }}
+        </div>
+        <div>
+            <label for="staus">Status</label>
+            {{ form.status }}
+        </div>
         <input type="submit" value="Create Blog">
     </form>
 </body>
+
 </html>

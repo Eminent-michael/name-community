@@ -19,8 +19,8 @@ User = get_user_model()
 
 class Blog(models.Model):
     STATUS_CHOICE = (
-        ("publish", 'Publish'),
-        ("draft", "Draft")
+        ("draft", "Draft"),
+        ("publish", 'Publish')
     )
     
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_user')
@@ -28,7 +28,7 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     categories = models.ManyToManyField(Category, blank=True)
     # body = models.TextField()
-    body = RichTextField(config_name= 'awesome_ckeditor', null=True, blank=True)
+    body = RichTextField(config_name= 'default', null=True, blank=True)
     picture = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
     publish = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=12, choices=STATUS_CHOICE, default='draft')

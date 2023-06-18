@@ -77,7 +77,7 @@ TEMPLATES = [
 # CKEDITOR CONFIGURATION
 
 CKEDITOR_CONFIGS = {
-    'awesome_ckeditor': {
+    'default': {
         'toolbar': 'Basic',
     },
 }
