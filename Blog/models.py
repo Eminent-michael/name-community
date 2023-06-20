@@ -23,7 +23,7 @@ class Blog(models.Model):
         ("publish", 'Publish')
     )
     
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_user')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     categories = models.ManyToManyField(Category, blank=True)
@@ -49,7 +49,7 @@ class Blog(models.Model):
         return super().save(*args, **kwargs)
     
     def get_absolute_url(self):
-        return reverse('blog-details', args=[self.slug, self.publish.month])
+        return reverse('blogDetails', args=[self.id, self.slug])
     
     
 class BlogComment(models.Model):

@@ -35,11 +35,11 @@ class CustomCreateUserForm(forms.Form):
                 ["Password does not match."])
             return self.cleaned_data
 
-        if any([chr.isdigit() for chr in password]) and any([chr.isupper() for chr in password]):
-            pass
-        else:
-            self.errors['password'] = self.error_class(
-                ['Password does not meet the required'])
+        # if any([chr.isdigit() for chr in password]) and any([chr.isupper() for chr in password]):
+        #     pass
+        # else:
+        #     self.errors['password'] = self.error_class(
+        #         ['Password does not meet the required'])
 
         return self.cleaned_data
 

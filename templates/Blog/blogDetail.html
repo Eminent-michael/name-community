@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details</title>
+</head>
+
+<style>
+
+    *{
+        text-align: center;
+    }
+
+</style>
+
+<body>
+    <h1>Blog Details</h1>
+
+    <h2>{{ blog.title }}</h2>
+    <p> {{ blog.body | safe }} </p>
+
+    {% with comments.count as total_count %}
+    <div>
+        
+        <h2>{{ total_count }} comment{{ total_count | pluralize }}</h2>
+
+        {% for comment in comments %}
+        <div>
+           {{ comment.user.username }}
+           {{ comment.body }}
+        </div>
+        {% empty %}
+        There is no comments yet.
+        {% endfor %}
+    </div>
+    {% endwith %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="blog_id" value="{{ blog.id }}">
+        {{ comment_form }}
+        <input type="submit" value="Comment">
+    </form>
+</body>
+</html>
