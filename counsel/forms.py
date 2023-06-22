@@ -6,6 +6,7 @@ from .models import CounselRoom
 class CreateRoomForm(forms.ModelForm):
     topic = forms.CharField(widget=forms.TextInput(attrs={}))
     description = forms.CharField(widget=forms.Textarea(attrs={}))
+    categories = forms.CharField(widget=forms.TextInput(attrs={}))
     
     class Meta:
         model = CounselRoom
