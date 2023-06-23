@@ -8,5 +8,26 @@
 </head>
 <body>
     <h2>Counsel Room</h2>
+    <h2>{{ room.topic }}</h2>
+
+    <div>
+        {% for message in messages %}
+        <div>
+            {{ message.user.username }} --- {{ message.created }}
+            <div>
+                {{ message }}
+            </div>
+        </div>
+        {% empty %}
+        <h1>No messages yets........</h1>
+        {% endfor %}
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="room_id" value="{{ room.id }}">
+        {{form}}
+        <input type="submit" value="Send">
+    </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import CounselRoom
+from .models import CounselRoom, Message
 
 
 class CreateRoomForm(forms.ModelForm):
@@ -11,3 +11,11 @@ class CreateRoomForm(forms.ModelForm):
     class Meta:
         model = CounselRoom
         fields = ["topic", "description", "categories"]
+        
+        
+class MessageForm(forms.ModelForm):
+    body = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Write your message here"}))
+    
+    class Meta:
+        model = Message
+        fields = ["body"]
