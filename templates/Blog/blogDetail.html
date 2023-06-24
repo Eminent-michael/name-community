@@ -19,6 +19,13 @@
     <h1>Blog Details</h1>
 
     <h2>{{ blog.title }}</h2>
+
+    <div style="display:block;">
+        {% for category in blog.categories.all %}
+        <a style="color:brown" href="{{ category.get_absolute_url }}">{{ category }}</a>
+        {% endfor %}
+    </div>
+
     <p> {{ blog.body | safe }} </p>
 
     {% with comments.count as total_count %}

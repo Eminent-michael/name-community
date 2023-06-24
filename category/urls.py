@@ -4,5 +4,5 @@ from .views import categories
 
 
 urlpatterns = [
-    path('', categories, name='category')
+    path("<str:title>", categories, name='category')
 ]
